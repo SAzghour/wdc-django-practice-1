@@ -15,15 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django_practice_1 import views
+from .views import (
+    authors,
+    author,
+    hello_world,
+    current_date,
+    my_age,
+    next_birthday,
+    profile
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    ##################
-    # Your URLs here #
-    ##################
-
-    path('authors/', views.authors, name='authors'),
-    path('author/<str:authors_last_name>', views.author, name='author'),
+    path('hello-world/', hello_world, name="hello_world"),
+    path('date/', current_date, name="date"),
+    path('my-age/<int:year>/<int:month>/<int:day>/', my_age, name="age"),
+    path('next-birthday/<str:birthday>/', next_birthday, name="birthday"),
+    path('profile/', profile, name="profile"),
+    path('authors/', authors, name='authors'),
+    path('author/<str:authors_last_name>/', author, name='author')
 ]
